@@ -1,0 +1,20 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "API for Todo list",
+  "main": "server.js",
+  "scripts": {
+    "start-dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "James Whiteley",
+  "dependencies": {
+    "mongoose": "^5.8.5",
+    "mongoose-timestamp": "^0.6.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^2.0.2",
+    "restify": "^8.5.1"
+  },
+  "repository": {},
+  "license": "UNLICENSED"
+}
