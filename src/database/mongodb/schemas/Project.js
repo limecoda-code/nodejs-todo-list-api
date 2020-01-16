@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const timestamps = require('mongoose-timestamp');
 
 const ProjectSchema = new mongoose.Schema(
 	{
@@ -19,8 +18,6 @@ const ProjectSchema = new mongoose.Schema(
 	},
 	{ minimize: false },
 );
-
-ProjectSchema.plugin(timestamps);
 
 const Project = mongoose.model('Project', ProjectSchema);
 module.exports = Project;

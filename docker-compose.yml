@@ -10,14 +10,41 @@ services:
       - "9229"
     volumes:
       - ./src:/usr/src/api
-    entrypoint: /bin/bash ./usr/src/api/start.sh
+    entrypoint: /bin/bash ./usr/src/api/start.sh       # Start servers MongoDB setup
+    #entrypoint: /bin/bash ./usr/src/api/start.sh 3306  # Start servers MySQL setup
+    #entrypoint: /bin/bash ./usr/src/api/start.sh 5432   # Start servers PostgreSQL setup
+
+  ################################################################
+  ######################## MONGODB CONFIG ########################
+  ################################################################
   database:
     image: "mongo:latest"
     ports:
       - "27017:27017"
+
+  ################################################################
+  ######################### MYSQL CONFIG #########################
+  ################################################################
   #database:
   #  image: mysql
+  #  ports:
+  #    - "3306:3306"
+  #  volumes:
+  #    - ./src/database/mysql/schemas/todo.sql:/docker-entrypoint-initdb.d/todo.sql
   #  command: --default-authentication-plugin=mysql_native_password
-  #  restart: always
   #  environment:
-  #    MYSQL_ROOT_PASSWORD: example
+  #    - MYSQL_ROOT_PASSWORD=example
+
+  ################################################################
+  ###################### POSTGRESQL CONFIG #######################
+  ################################################################
+  #database:
+  #  image: "postgres:latest"
+  #  ports:
+  #    - "5432:5432"
+  #  environment:
+  #    - DEBUG=true
+  #    - POSTGRES_USER=todo
+  #    - POSTGRES_PASSWORD=example
+  #  volumes:
+  #    - ./src/database/postgresql/schemas/todo.sql:/docker-entrypoint-initdb.d/todo.sql

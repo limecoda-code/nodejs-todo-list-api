@@ -1,11 +1,15 @@
+const config = require('../../config');
 const mysql = require('mysql');
+
 const connection = mysql.createConnection({
-  host     : 'database',
-  user     : 'root',
-  password : 'example'
+  host: config.db.host,
+	port: config.db.port,
+  user: config.db.user,
+  password: config.db.password,
+  database: 'todo'
 });
  
-module.exports = connection.connect(function(err) {
+connection.connect(function(err) {
   if (err) {
     console.error('error connecting: ' + err.stack);
     return;
@@ -13,3 +17,5 @@ module.exports = connection.connect(function(err) {
  
   console.log('connected as id ' + connection.threadId);
 });
+
+module.exports = connection;

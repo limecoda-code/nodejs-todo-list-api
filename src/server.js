@@ -23,6 +23,7 @@ server.post('/projects', (req, res, next) => {
     res.send(201, project);
   })
   .catch((error) => {
+    console.log(error);
     res.send(400, error);
   });
 
@@ -57,6 +58,7 @@ server.get('/projects/:id', (req, res, next) => {
     }
   })
   .catch((error) => {
+    console.log(error);
     res.send(400, error);
   });
 
@@ -69,7 +71,11 @@ server.put('/projects/:id', (req, res, next) => {
 
   ProjectInterface.updateProject(req.params.id, data)
   .then((project) => {
-    res.send(204);
+    if (project) {
+      res.send(200, project);
+    } else {
+      res.send(404);
+    }
   })
   .catch((error) => {
     res.send(400, error);
@@ -150,7 +156,11 @@ server.put('/tasks/:id', (req, res, next) => {
 
   TaskInterface.updateTask(req.params.id, data)
   .then((task) => {
-    res.send(204);
+    if (task) {
+      res.send(200, task);
+    } else {
+      res.send(404);
+    }
   })
   .catch((error) => {
     res.send(400, error);

@@ -16,7 +16,10 @@ module.exports = {
 		return Project.findById(projectId).exec();
 	},
 	updateProject: function(projectId, data) {
-		return Project.findByIdAndUpdate(projectId, data).exec();
+		return Project.findByIdAndUpdate(projectId, data).exec()
+		.then((project) => {
+			return this.retrieveProject(projectId);
+		});
 	},
 	deleteProject: function(projectId) {
 		return Project.findByIdAndRemove(projectId).exec();

@@ -16,7 +16,10 @@ module.exports = {
 		return Task.findById(taskId).exec();
 	},
 	updateTask: function(taskId, data) {
-		return Task.findByIdAndUpdate(taskId, data).exec();
+		return Task.findByIdAndUpdate(taskId, data).exec()
+		.then((task) => {
+			return this.retrieveTask(taskId);
+		});
 	},
 	deleteTask: function(taskId) {
 		return Task.findByIdAndRemove(taskId).exec();

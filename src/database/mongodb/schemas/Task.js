@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const timestamps = require('mongoose-timestamp');
 
 // Define schema types
 var ObjectId = mongoose.Schema.Types.ObjectId;
@@ -27,8 +26,6 @@ const TaskSchema = new mongoose.Schema(
 	},
 	{ minimize: false },
 );
-
-TaskSchema.plugin(timestamps);
 
 const Task = mongoose.model('Task', TaskSchema);
 module.exports = Task;
