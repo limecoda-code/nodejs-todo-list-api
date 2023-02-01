@@ -9,7 +9,7 @@
   },
   "author": "James Whiteley",
   "dependencies": {
-    "mongoose": "^5.8.5",
+    "mongoose": "^5.13.15",
     "mongoose-timestamp": "^0.6.0",
     "mysql": "^2.17.1",
     "nodemon": "^2.0.2",
